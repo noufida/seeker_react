@@ -1,0 +1,45 @@
+.welcome-img{
+    width: 90%;
+}
+
+.img-div{
+    margin-top: 4%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.cardz{
+    width:40%;
+    margin-top: 5%;
+    background-color: rgba(24, 125, 207, 0.247);
+    margin-bottom: 5%;
+}
+
+.col1{
+    display: flex;
+    justify-content: center;
+}
+
+.text{
+    padding: 3%;
+}
+
+.buttonz{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;    
+}
+
+.btnz{
+    background-color: #fff;
+    border: rgba(59, 64, 134, 0.589) 1px solid;
+    color:black;
+    height: 50px;
+    font-weight: bold;
+}
+
+.btnz:hover{
+    background-color: #fff;
+    color: black;
+}

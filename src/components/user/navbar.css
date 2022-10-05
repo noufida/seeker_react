@@ -1,0 +1,26 @@
+.navbar{
+    background-color: #E3E4E6;
+    
+}
+
+/*--------------- navigation bar links ---------------*/
+.navlinks{
+    text-decoration: none;
+    color:rgb(10, 10, 102);
+    margin:8px;
+    font-weight: bold;
+}
+
+.navlinks:hover{
+    color:rgb(29, 29, 117)
+    
+}
+
+.logoz{
+    color:rgb(29, 29, 117);
+    font-size:xx-large;
+    font-weight: bolder;
+    /* font-style: italic; */
+    font-family:'Times New Roman', Times, serif;
+    padding-left:4%
+}
