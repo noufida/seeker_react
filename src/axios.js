@@ -4,12 +4,12 @@ import jwt_decode from 'jwt-decode'
 import dayjs from 'dayjs'
 
 
-const baseURL='http://127.0.0.1:8000/'
+const baseURL='https://seeker.savebox.ae/'
 
 let authTokens = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null
 
 const axiosInstance = axios.create({
-    baseURL:'http://127.0.0.1:8000/',
+    baseURL:'https://seeker.savebox.ae/',
     withCredentials: true,
    
   });
