@@ -25,7 +25,7 @@ function ApplicantProfile() {
     const {authTokens} = useContext(AuthContext)
     const navigate = useNavigate()
 
-    const Baseurl = 'http://seeker.savebox.ae/'
+    const Baseurl = 'https://seeker.savebox.ae/'
 
 
     const [resume, setResume] = useState('')
