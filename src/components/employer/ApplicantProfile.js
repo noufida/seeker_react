@@ -243,7 +243,7 @@ function ApplicantProfile() {
                   <p>Email:{contact.email}</p>
                   <p>Mobile: {contact.mobile}</p> <br/><hr/> <br/>
                   <h5 style={{color:'green'}}>RESUME</h5>
-                  <a href={Baseurl + resume.resume} rel="noreferrer"  target="_blank">download resume</a> <br/><hr/>
+                  <a href={ resume.resume} rel="noreferrer"  target="_blank">download resume</a> <br/><hr/>
                   <br/> <h5 style={{color:'green'}}>SKILLS</h5><br/>
           {
             skill.map((obj)=><>

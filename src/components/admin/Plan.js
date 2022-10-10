@@ -182,7 +182,7 @@ function Plan() {
             autoFocus
             margin="dense"
             id="name"
-            label="Job Category"
+            label="Plan Name"
             type="text"
             fullWidth
             variant="standard"

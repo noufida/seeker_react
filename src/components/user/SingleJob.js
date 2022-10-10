@@ -30,6 +30,8 @@ function SingleJob() {
   const [showW, setShowW] = useState(false);
   const [resume, setResume] = useState('')
 
+  const [fav, setFav] = useState(false)
+
   const handleClose = () => {
     setShow(false);
    
@@ -38,6 +40,7 @@ function SingleJob() {
    
 
   const handleCloseW = () => {
+    checkFavHandler()
     setShowW(false);
    
   }
@@ -52,6 +55,7 @@ function SingleJob() {
     checkHandler()
     getResumeHandler()
     getJdHandler()
+    checkFavHandler()
   }, [])
 
   //dialog functions
@@ -107,10 +111,12 @@ function SingleJob() {
 
       //api call for getting jd of a job
       const getJdHandler=async()=>{
+        console.log('ahooooooooy')
         await axios.get(`employer/jobs/${a}/jd/`,
         {headers:{Authorization:`Bearer ${authTokens?.token}`}} ).then((response)=>{
             console.log(response.data,"qualifications")
             if (response.status === 200) {
+              console.log('hello jd',response.data)
                 setJd(response.data)
                 
             }
@@ -118,7 +124,7 @@ function SingleJob() {
            
           }).catch((err)=>{
             console.log(err.response.data.detail,"erorr")
-            setResume('nothing to show')
+           
           })
     
       }
@@ -181,6 +187,25 @@ function SingleJob() {
 
   }
 
+    //api call for checking whether saved or not
+    const checkFavHandler=async()=>{
+      await axios.get(`user/job_fav_or_not/${a}/`,
+      {headers:{Authorization:`Bearer ${authTokens?.token}`}} ).then((response)=>{
+        
+          if (response.status === 200) {
+              console.log(response.data,"check result")
+              setFav(response.data.appleid)
+          }
+          
+         
+        }).catch((err)=>{
+          console.log(err.response.data.detail,"erorr")
+          
+        })
+  
+    }
+
+
   //api call for getting skills for a job
   const skillHandler=async()=>{
     await axios.get(`employer/jobs/${a}/skills`,
@@ -218,6 +243,8 @@ function SingleJob() {
       })
 
   }
+
+  
 
   //api call for fav a job
   const favHandler=async()=>{
@@ -317,9 +344,10 @@ function SingleJob() {
             
             {check ? <p style={{color:'blue'}}><FactCheckTwoToneIcon/> Resume Submitted</p> : <>
             <Button className='apply m-2' onClick={handleClickOpen}>Apply</Button>
-            
-            <Button className='save m-2' onClick={favHandler}><BookmarkBorderIcon/>Save</Button>
-            
+            {fav ? 
+            <Button className='save m-2'><BookmarkBorderIcon/>Saved</Button>
+             : 
+             <Button className='save m-2' onClick={favHandler}><BookmarkBorderIcon/>Save</Button>}
             
             </>}
 

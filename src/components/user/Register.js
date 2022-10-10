@@ -7,7 +7,7 @@ import axios from '../../axios'
 import { useNavigate} from 'react-router-dom'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import Modal from 'react-bootstrap/Modal';
 
 function BasicExample() {
   const {setMobile,mobile} =useContext(AuthContext)
@@ -27,6 +27,14 @@ function BasicExample() {
   const [passwordErr, setPasswordErr] = useState({})
   const [confirm_passwordErr, setConfirm_passwordErr] = useState({})
 
+  //modal
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [backend, setBackend] = useState([])
+
+
   //api call for user registration
   const registerHandler = async(e)=>{
     e.preventDefault()
@@ -43,7 +51,7 @@ function BasicExample() {
       confirm_password:confirm_password
 
     }).then((response)=>{
-      console.log(response.data)
+      console.log(response.data,'kkkkk')
       if (response.data.mobile){
 
         navigate('/verify')
@@ -53,8 +61,11 @@ function BasicExample() {
 
     })  .catch(function (error) {
       if (error.response) {
-        console.log(error.response.status);
-        console.log(error.response.headers);
+        setBackend(error.response.data.error)
+        handleShow()
+        console.log(error.message,'ppp');
+        console.log(error,'llll');
+        // console.log(error.response.headers);
       }
     }) } 
   }
@@ -138,6 +149,24 @@ function BasicExample() {
 
   return (
     <div className='box-signup'>
+
+
+
+<Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Some Error Occured</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{backend}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          
+        </Modal.Footer>
+      </Modal>
+
+
+
       <Row>
         <Col>
         <h2 style={{'textAlign':'center'}}>SIGNUP</h2>
